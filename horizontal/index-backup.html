@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Image Slider</title>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+
+<style type="text/css">
+.slider-wrap {width:100%; overflow:hidden;}
+.myslider {width:1000px; margin:0px auto; border-top:1px solid #000;}
+.myslider .container {width:100%; list-style:none; margin:0; padding:0; display:table; margin-left:0px; border-bottom:5px solid #F00;}
+.myslider .container div {width:100%; margin:0; padding:0 50px 0 0; display:table-cell; box-sizing:border-box; opacity:0.5;
+-webkit-transition: all 0.6s ease-out;
+-moz-transition: all 0.6s ease-out;
+transition: all 0.6s ease-out;
+}
+.myslider .container div img {height:400px;}
+.myslider .container div.active {opacity:1;}
+</style>
+
+<script>
+	var docWidth;
+	var sliderWidth;
+	var slider = '.myslider';
+	var slideContainer = '.container';
+	var slide = 'div';
+
+	$(document).ready(function() {
+
+		setDefaults();
+		
+		activateSlide();
+
+        $(slideContainer + " " + slide).click(function(){
+			
+			activateSlide();
+			
+			var sliderLeftOffset = (docWidth - sliderWidth)/2;
+			console.log(sliderLeftOffset);
+
+			$(this).parent().css({'margin-left':'0px'});
+			
+			var currItemWidth = $(this).width();
+			console.log(currItemWidth);
+
+			var leftOffset = $(this).offset().left;
+			console.log(leftOffset);
+
+			$(this).parent().animate({'margin-left':'-'+ (leftOffset-sliderLeftOffset) +'px'});
+		});
+
+    });
+	
+	$(window).resize(function() {
+		setDefaults();
+	});
+	
+	function setDefaults() {
+		docWidth = $(document).width();
+		console.log('Doc width: ' + docWidth);
+		sliderWidth = $(slider).width();
+		console.log('Slider width: ' + sliderWidth);
+	}
+	
+	function activateSlide(thisSlide) {
+		if ( thisSlide == undefined ) {
+			thisSlide = $(slideContainer + " " + slide).eq(0);
+		}
+		$(slideContainer + " " + slide).removeClass('active');
+		$(thisSlide).addClass('active');
+	}
+</script>
+
+</head>
+
+<body>
+<div class="slider-wrap">
+    <div class="myslider">
+        <div class="container">
+            <div><img src="http://placehold.it/1000x400" /></div>
+            <div><img src="http://placehold.it/1000x401" /></div>
+            <div><img src="http://placehold.it/1000x402" /></div>
+            <div><img src="http://placehold.it/1000x403" /></div>
+            <div><img src="http://placehold.it/1000x404" /></div>
+            <div><img src="http://placehold.it/1000x405" /></div>
+            <div><img src="http://placehold.it/1000x406" /></div>
+            <div><img src="http://placehold.it/1000x407" /></div>
+        </div>
+    </div>
+</div>
+
+<a href="http://www.typicallyspanish.com/royalslider/templates/visible-nearby/">Reference</a>
+</body>
+</html>
