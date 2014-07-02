@@ -46,7 +46,7 @@ function funcAfterSlideChange () {
 var params = { allowScriptAccess: "always" };
 var atts = { id: "myytplayer" };
 swfobject.embedSWF("http://www.youtube.com/v/lHbWRFpbma4?enablejsapi=1&playerapiid=ytplayer&version=3",
-				   "ytapiplayer", "1000", "562.5", "8", null, null, params, atts);
+				   "ytapiplayer", "1000", "542.5", "8", null, null, params, atts);
 function onYouTubePlayerReady(playerId) {
   ytplayer = document.getElementById("myytplayer");
   ytplayer.addEventListener("onStateChange", "onytplayerStateChange");

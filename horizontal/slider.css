@@ -1,13 +1,16 @@
+body {padding:0; margin:0;}
 .slider-wrap {width:100%; max-width:3000px; margin:0 auto; background:#333; overflow:hidden;}
-.myslider {width:1000px; margin:0px auto; border-top:10px solid #f0f;}
-.myslider .container {width:100%; list-style:none; margin:0; padding:0; display:table; margin-left:0px; border-bottom:5px solid #F00;}
-.myslider .container div {width:100%; padding-top:(100% * 9/16); display:table-cell; box-sizing:border-box; opacity:0.2; border-top: 2px solid #00F;
--webkit-transition: all 0.3s ease-out;
--moz-transition: all 0.3s ease-out;
-transition: all 0.3s ease-out;
-}
-.myslider .container div:hover {opacity:0.6;}
-.myslider .container div img {height:562.5px; width:1000px;}
-.myslider .container div.active {opacity:1;}
-
-span {padding:5px; background:#CCC;}
+.myslider {width:1000px; margin:0px auto;}
+.myslider .container {width:100%; list-style:none; margin:0; padding:0; display:table; margin-left:0px;}
+.myslider .container > div {position:relative; width:100%; padding-top:(100% * 9/16); display:table-cell; box-sizing:border-box; opacity:0.2; -webkit-transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; transition: all 0.3s ease-out;}
+.myslider .container > div:hover {opacity:0.6;}
+.myslider .container > div:after {content:''; position:absolute; top:0; left:0; right:0; bottom:0; z-index:9999;}
+.myslider .container > div:hover:after {border:5px solid #F00; box-sizing:border-box}
+.myslider .container > div.active:after {display:none;}
+.myslider .container > div img {height:542.5px; width:1000px;}
+.myslider .container > div.active {opacity:1;}
+/*
+.myslider {border-top:10px solid #f0f;}
+.myslider .container {border-bottom:5px solid #F00;}
+.myslider .container > div {border-top: 2px solid #00F;}
+*/
